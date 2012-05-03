@@ -30,7 +30,7 @@ var po = org.polymaps;
 
 var map = po.map()
     .container(document.body.appendChild(po.svg("svg")))
-    .center({lon: -73.9519, lat: 40.6849})
+    .center({lon: 43.0695419255, lat: -89.40853026500001})
     .zoom(12)
     .add(po.interact());
 
@@ -41,7 +41,7 @@ map.add(po.image()
     .hosts(["a.", "b.", "c.", ""])));
 
 map.add(po.kml()
-    .url("sample.kml")
+    .url("madison_neighborhoods_14613.kml")
     .tile(false)
     .on("load", load));
 
