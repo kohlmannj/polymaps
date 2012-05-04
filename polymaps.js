@@ -1201,6 +1201,7 @@ po.geoJson = function(fetch) {
         x.setAttribute("r", 4.5);
         x.setAttribute("transform", "translate(" + (p = proj(c[i])).x + "," + p.y + ")");
       }
+      g.setAttribute("class", "MultiPoint");
       return g;
     },
 
@@ -1215,6 +1216,7 @@ po.geoJson = function(fetch) {
       d.pop();
       if (!d.length) return;
       x.setAttribute("d", d.join(""));
+      x.setAttribute("class", "LineString");
       return x;
     },
 
@@ -1237,6 +1239,7 @@ po.geoJson = function(fetch) {
       }
       if (!d.length) return;
       x.setAttribute("d", d.join(""));
+      x.setAttribute("class", "MultiLineString");
       return x;
     },
 
@@ -1259,6 +1262,7 @@ po.geoJson = function(fetch) {
       }
       if (!d.length) return;
       x.setAttribute("d", d.join(""));
+      x.setAttribute("class", "Polygon");
       return x;
     },
 
@@ -1289,6 +1293,7 @@ po.geoJson = function(fetch) {
       }
       if (!d.length) return;
       x.setAttribute("d", d.join(""));
+      x.setAttribute("class", "MultiPolygon");
       return x;
     },
 
@@ -1302,6 +1307,7 @@ po.geoJson = function(fetch) {
         x = geometry(c[i], proj);
         if (x) g.appendChild(x);
       }
+      g.setAttribute("class", "GeometryCollection");
       return g;
     }
 

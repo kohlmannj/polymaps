@@ -36,25 +36,13 @@
       Polygon: function(e) {
         return {
           type: "Polygon",
-          coordinates: e.getElementsByTagName("outerBoundaryIs")[0].getElementsByTagName("LinearRing")[0].getElementsByTagName("coordinates")[0]
+          coordinates: [e.getElementsByTagName("outerBoundaryIs")[0].getElementsByTagName("LinearRing")[0].getElementsByTagName("coordinates")[0]
           .textContent
           .trim()
           .split(/\s+/)
-          .map(function(a) { return a.split(",").slice(0, 2).map(Number); })
+          .map(function(a) { return a.split(",").slice(0, 2).map(Number); })]
         }
       }
-      // },
-      // 
-      // Polygon: function(e) {
-      //   return {
-      //     type: "Polygon",
-      //     coordinates: e.getElementsByTagName("outerBoundaryIs")[0].getElementsByTagName("LinearRing")[0].getElementsByTagName("coordinates")[0]
-      //       .textContent
-      //       .trim()
-      //       .split(/\s+/)
-      //       .map(function(a) { return a.split(",").slice(0, 2).map(Number); })
-      //   };
-      // }
 
     };
 
@@ -76,7 +64,9 @@
           var g = geometry(c);
           if (g) f.geometry = g;
         }
-        if (f.geometry) features.push(f);
+        if (f.geometry) {
+          features.push(f);
+        }
       }
       return {type: "FeatureCollection", features: features};
     }
